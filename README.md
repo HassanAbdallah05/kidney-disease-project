@@ -1,4 +1,4 @@
-# kidney-disease-project
+# Chronic Kidney Disease (CKD) Prediction Using Machine Learning
 
 This project reproduces the paper 'Enhancing machine learning-based forecasting of chronic renal disease with explainable AI' and 
 extends it by adding SVM, XGBoost, SelectKBest feature selection, and MCC for stronger evaluation.
@@ -29,8 +29,8 @@ extends it by adding SVM, XGBoost, SelectKBest feature selection, and MCC for st
 - explainability.py: used SHAP / LIME
 
 ## Folders
-- data/ --> contains the CKD dataset
-- code/ --> contains preprocessing, training, and evaluation code
-- results/ -->  contains output tables and figures
-- models/ --> contains saved models
-- notebooks/ --> contains experiment notebooks
+- data/: contains the CKD dataset
+- code/: contains preprocessing, training, and evaluation code
+- results/: contains output tables and figures
+- models/: contains saved models
+- notebooks/: contains experiment notebooks
