@@ -22,11 +22,11 @@ extends it by adding SVM, XGBoost, SelectKBest feature selection, and MCC for st
 
 
 ## Code files
-preprocess.py: used for clean data, impute missing values, encode, scale
-feature_selection.py: used for apply SelectKBest
-train_models.py: used train baseline models + SVM + XGBoost
-evaluate.py: compute accuracy, precision, recall, specificity, ROC-AUC, MCC
-explainability.py: used SHAP / LIME
+- preprocess.py: used for clean data, impute missing values, encode, scale
+- feature_selection.py: used for apply SelectKBest
+- train_models.py: used train baseline models + SVM + XGBoost
+- evaluate.py: compute accuracy, precision, recall, specificity, ROC-AUC, MCC
+- explainability.py: used SHAP / LIME
 
 ## Folders
 - data/ --> contains the CKD dataset
