@@ -16,7 +16,7 @@ Our Extensions:
 3. **Add MCC and Cohen's Kappa** as additional evaluation metrics, which are more reliable for imbalanced medical data.
 
 
-##How to Run
+## How to Run
 ### 1. Clone the repository
 ```bash
 git clone https://github.com/HassanAbdallah05/kidney-disease-project.git
