@@ -13,7 +13,7 @@ extends it by adding SVM, XGBoost, SelectKBest feature selection, and MCC for st
 ## How to Run
 1. install requirements:
    ```bash
-pip install -r requirements.txt
+   pip install -r requirements.txt
 
 3. Run training and evaluation files:
     python code/train_models.py
