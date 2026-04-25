@@ -36,3 +36,8 @@ extends it by adding SVM, XGBoost, SelectKBest feature selection, and MCC for st
 - `models/:` contains saved models
 - `notebooks/:` contains experiment notebooks
 - `requirements.txt` : contains required Python libraries
+
+
+1. Install the required libraries:
+```bash
+pip install -r requirements.txt
