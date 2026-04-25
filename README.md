@@ -10,16 +10,29 @@ extends it by adding SVM, XGBoost, SelectKBest feature selection, and MCC for st
 - Compare results before and after feature selection
 - Add MCC as an additional evaluation metric
 
-## How to Run
-1. install requirements:
-   ```bash
-   pip install -r requirements.txt
+Our Extensions: 
+1. **Add SVM and XGBoost** as two additional classifiers to the original model comparison.
+2. **Apply SelectKBest** (ANOVA F-value) for feature selection, and compare model performance **before and after** feature selection.
+3. **Add MCC and Cohen's Kappa** as additional evaluation metrics, which are more reliable for imbalanced medical data.
 
-3. Run training and evaluation files:
-    python code/train_models.py
 
-5. Results will be saved in:
-    results/results_table.csv
+##How to Run
+### 1. Clone the repository
+```bash
+git clone https://github.com/HassanAbdallah05/kidney-disease-project.git
+cd kidney-disease-project
+```
+
+### 2. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Run the full pipeline
+```bash
+python code/train_models.py
+```
+
 
 
 ## Code files
