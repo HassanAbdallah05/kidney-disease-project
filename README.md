@@ -45,6 +45,14 @@ python code/train_models.py
 - `notebooks/:` contains experiment notebooks
 - `requirements.txt` : contains required Python libraries
 
+
 ## Refrence
 - **Original Paper:** [PeerJ Computer Science, vol. 10, e2291 (2024)](https://peerj.com/articles/cs-2291/)
 - **Dataset:** [UCI Chronic Kidney Disease Dataset](https://archive.ics.uci.edu/dataset/336/chronic+kidney+disease)
+
+
+## Team:
+- Hassan Abdalla 
+- Mahmoud Abuzaanounah 
+
+ML Course Project — Spring 2026
