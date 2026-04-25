@@ -3,12 +3,10 @@
 This project reproduces the paper 'Enhancing machine learning-based forecasting of chronic renal disease with explainable AI' and 
 extends it by adding SVM, XGBoost, SelectKBest feature selection, and MCC for stronger evaluation.
 
-## Extension
-- Add SVM
-- Add XGBoost
-- Apply SelectKBest feature selection
-- Compare results before and after feature selection
-- Add MCC as an additional evaluation metric
+
+The original paper builds an end-to-end CKD prediction pipeline using six ML models (Logistic Regression, Random Forest, Extra Trees, LightGBM, Decision Tree, ANN), with GridSearchCV tuning, SMOTE class balancing, and SHAP/LIME explainability achieving 99.07% accuracy on the UCI dataset.
+This project **reproduces** that work and **extends** it in three ways.
+
 
 Our Extensions: 
 1. **Add SVM and XGBoost** as two additional classifiers to the original model comparison.
@@ -52,3 +50,5 @@ python code/train_models.py
 - `requirements.txt` : contains required Python libraries
 
 
+**Original Paper:** [PeerJ Computer Science, vol. 10, e2291 (2024)](https://peerj.com/articles/cs-2291/)
+**Dataset:** [UCI Chronic Kidney Disease Dataset](https://archive.ics.uci.edu/dataset/336/chronic+kidney+disease)
