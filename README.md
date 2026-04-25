@@ -12,7 +12,8 @@ extends it by adding SVM, XGBoost, SelectKBest feature selection, and MCC for st
 
 ## How to Run
 1. install requirements:
-   pip install -r requirements.txt
+   ```bash
+pip install -r requirements.txt
 
 3. Run training and evaluation files:
     python code/train_models.py
@@ -38,6 +39,3 @@ extends it by adding SVM, XGBoost, SelectKBest feature selection, and MCC for st
 - `requirements.txt` : contains required Python libraries
 
 
-1. Install the required libraries:
-```bash
-pip install -r requirements.txt
