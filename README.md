@@ -28,17 +28,11 @@ extends it by adding SVM, XGBoost, SelectKBest feature selection, and MCC for st
 - evaluate.py: compute accuracy, precision, recall, specificity, ROC-AUC, MCC
 - explainability.py: used SHAP / LIME
 
+
 ## Folders
-- data/: contains the CKD dataset
-- code/: contains preprocessing, training, and evaluation code
-- results/: contains output tables and figures
-- models/: contains saved models
-- notebooks/: contains experiment notebooks
-
-
-
-## Repository Structure
 - `data/` : contains the CKD dataset
 - `code/` : contains preprocessing, training, evaluation, and explainability scripts
 - `results/` : contains output tables and figures
+- `models/:` contains saved models
+- `notebooks/:` contains experiment notebooks
 - `requirements.txt` : contains required Python libraries
