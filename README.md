@@ -14,23 +14,23 @@ extends it by adding SVM, XGBoost, SelectKBest feature selection, and MCC for st
 1. install requirements:
    pip install -r requirements.txt
 
-2. Run training and evaluation:
-   python code/train_models.py
+3. Run training and evaluation files:
+    python code/train_models.py
 
-3. Results will be saved in:
-   results/results_table.csv
+5. Results will be saved in:
+    results/results_table.csv
 
 
-# Code files
-preprocess.py: clean data, impute missing values, encode, scale
-feature_selection.py:  apply SelectKBest
-train_models.py:  train baseline models + SVM + XGBoost
+## Code files
+preprocess.py: used for clean data, impute missing values, encode, scale
+feature_selection.py: used for apply SelectKBest
+train_models.py: used train baseline models + SVM + XGBoost
 evaluate.py: compute accuracy, precision, recall, specificity, ROC-AUC, MCC
-explainability.py: SHAP / LIME
+explainability.py: used SHAP / LIME
 
 ## Folders
-- data/: contains the CKD dataset
-- code/: contains preprocessing, training, and evaluation code
-- results/: contains output tables and figures
-- models/: contains saved models
-- notebooks/: contains experiment notebooks
+- data/ --> contains the CKD dataset
+- code/ --> contains preprocessing, training, and evaluation code
+- results/ -->  contains output tables and figures
+- models/ --> contains saved models
+- notebooks/ --> contains experiment notebooks
