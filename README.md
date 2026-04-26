@@ -4,7 +4,7 @@ The original paper builds an end-to-end CKD prediction pipeline using six ML mod
 This project **reproduces** that work and **extends** it in three ways.
 
 
-Our Extensions: 
+## Our Extensions: 
 1. Add SVM and XGBoost as two additional classifiers to the original model comparison.
 2. Apply SelectKBest (ANOVA F-value) for feature selection, and compare model performance **before and after** feature selection.
 3. Add MCC as additional evaluation metric, which is more reliable for imbalanced medical data.
