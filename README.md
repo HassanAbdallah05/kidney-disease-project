@@ -6,8 +6,8 @@ This project **reproduces** that work and **extends** it in three ways.
 
 ## Our Extensions: 
 1. Add SVM and XGBoost as two additional classifiers to the original model comparison.
-2. Apply SelectKBest (ANOVA F-value) for feature selection, and compare model performance **before and after** feature selection.
-3. Add MCC as additional evaluation metric, which is more reliable for imbalanced medical data.
+2. Apply SelectKBest for feature selection, and compare model performance **before and after** feature selection.
+3. Add MCC as an additional evaluation metric to provide a more balanced assessment for imbalanced medical data.
 
 
 ## How to Run
@@ -24,15 +24,19 @@ pip install -r requirements.txt
 
 ### 3. Run the full pipeline
 ```bash
+python code/preprocess.py
+python code/feature_selection.py
 python code/train_models.py
+python code/evaluate.py
+python code/explainability.py
 ```
 
 
 
 ## Code files
-- preprocess.py: used for clean data, impute missing values, encode, scale
+- preprocess.py: cleans data, impute missing values, encode, scale
 - feature_selection.py: used for apply SelectKBest
-- train_models.py: used train baseline models + SVM + XGBoost
+- train_models.py: trains baseline models + SVM + XGBoost
 - evaluate.py: compute accuracy, precision, recall, specificity, ROC-AUC, MCC
 - explainability.py: used SHAP / LIME
 
@@ -46,12 +50,12 @@ python code/train_models.py
 - `requirements.txt` : contains required Python libraries
 
 
-## Refrence
+## References
 - **Original Paper:** [PeerJ Computer Science, vol. 10, e2291 (2024)](https://peerj.com/articles/cs-2291/)
 - **Dataset:** [UCI Chronic Kidney Disease Dataset](https://archive.ics.uci.edu/dataset/336/chronic+kidney+disease)
 
 
-## Team:
+## Teams
 - Hassan Abdalla 
 - Mahmoud Abuzaanounah 
 
