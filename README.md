@@ -33,7 +33,6 @@ python code/explainability.py
 ```
 
 
-
 ## Code files
 - preprocess.py: cleans data, impute missing values, encode, scale
 - feature_selection.py: used for apply SelectKBest
@@ -52,12 +51,12 @@ python code/explainability.py
 
 
 ## References
-- **Original Paper:** [PeerJ Computer Science, vol. 10, e2291 (2024)](https://peerj.com/articles/cs-2291/)
+- **Original paper:** [PeerJ Computer Science, vol. 10, e2291 (2024)](https://peerj.com/articles/cs-2291/)
 - **Dataset:** [UCI Chronic Kidney Disease Dataset](https://archive.ics.uci.edu/dataset/336/chronic+kidney+disease)
 
 
-## Teams
+## Team
 - Hassan Abdalla 
 - Mahmoud Abuzaanounah 
 
-ML Course Project — Spring 2026
+ML Course Project / Spring 2026
