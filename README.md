@@ -1,7 +1,8 @@
 # Chronic Kidney Disease (CKD) Prediction Using Machine Learning
 
-The original paper builds an end-to-end CKD prediction pipeline using six ML models (Logistic Regression, Random Forest, Extra Trees, LightGBM, Decision Tree, ANN), with GridSearchCV tuning, SMOTE class balancing, and SHAP/LIME explainability achieving 99.07% accuracy on the UCI dataset.
-This project **reproduces** that work and **extends** it in three ways.
+This project reproduces a CKD prediction pipeline based on the paper *Enhancing machine learning-based forecasting of chronic renal disease with explainable AI*. The original work uses machine learning models, SMOTE, GridSearchCV, and SHAP/LIME explainability on the UCI CKD dataset.
+
+Our extension adds SVM, XGBoost, SelectKBest feature selection, and MCC evaluation to improve the model comparison and provide a more balanced assessment.
 
 
 ## Our Extensions: 
