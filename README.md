@@ -7,7 +7,7 @@ This project **reproduces** that work and **extends** it in three ways.
 Our Extensions: 
 1. **Add SVM and XGBoost** as two additional classifiers to the original model comparison.
 2. **Apply SelectKBest** (ANOVA F-value) for feature selection, and compare model performance **before and after** feature selection.
-3. **Add MCC and Cohen's Kappa** as additional evaluation metrics, which are more reliable for imbalanced medical data.
+3. **Add MCC as additional evaluation metric, which is more reliable for imbalanced medical data.
 
 
 ## How to Run
