@@ -1,6 +1,6 @@
 # Chronic Kidney Disease (CKD) Prediction Using Machine Learning
 
-This project reproduces a CKD prediction pipeline based on the paper *Enhancing machine learning-based forecasting of chronic renal disease with explainable AI*. The original work uses machine learning models, SMOTE, GridSearchCV, and SHAP/LIME explainability on the UCI CKD dataset.
+This project reproduces a CKD prediction pipeline based on the paper "Enhancing machine learning-based forecasting of chronic renal disease with explainable AI". The original work uses machine learning models, SMOTE, GridSearchCV, and SHAP/LIME explainability on the UCI CKD dataset.
 
 Our extension adds SVM, XGBoost, SelectKBest feature selection, and MCC evaluation to improve the model comparison and provide a more balanced assessment.
 
