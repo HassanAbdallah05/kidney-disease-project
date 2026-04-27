@@ -1,0 +1,169 @@
+{
+  "full_features": {
+    "logistic_regression": {
+      "best_params": {
+        "C": 0.1,
+        "penalty": "l2",
+        "solver": "lbfgs"
+      },
+      "best_cv_accuracy": 0.9829,
+      "training_time_seconds": 1.69,
+      "model_path": "models/saved_models/logistic_regression_full.pkl"
+    },
+    "random_forest": {
+      "best_params": {
+        "max_depth": null,
+        "min_samples_split": 2,
+        "n_estimators": 200
+      },
+      "best_cv_accuracy": 0.9886,
+      "training_time_seconds": 1.22,
+      "model_path": "models/saved_models/random_forest_full.pkl"
+    },
+    "extra_trees": {
+      "best_params": {
+        "max_depth": null,
+        "n_estimators": 100
+      },
+      "best_cv_accuracy": 0.98,
+      "training_time_seconds": 0.42,
+      "model_path": "models/saved_models/extra_trees_full.pkl"
+    },
+    "lightgbm": {
+      "best_params": {
+        "learning_rate": 0.1,
+        "max_depth": -1,
+        "n_estimators": 100
+      },
+      "best_cv_accuracy": 0.9743,
+      "training_time_seconds": 5.77,
+      "model_path": "models/saved_models/lightgbm_full.pkl"
+    },
+    "decision_tree": {
+      "best_params": {
+        "max_depth": null,
+        "min_samples_split": 10
+      },
+      "best_cv_accuracy": 0.9514,
+      "training_time_seconds": 0.1,
+      "model_path": "models/saved_models/decision_tree_full.pkl"
+    },
+    "ann": {
+      "best_params": {
+        "alpha": 0.0001,
+        "hidden_layer_sizes": [
+          50
+        ],
+        "learning_rate_init": 0.01
+      },
+      "best_cv_accuracy": 0.9857,
+      "training_time_seconds": 0.66,
+      "model_path": "models/saved_models/ann_full.pkl"
+    },
+    "svm": {
+      "best_params": {
+        "C": 0.1,
+        "gamma": "scale",
+        "kernel": "linear"
+      },
+      "best_cv_accuracy": 0.9857,
+      "training_time_seconds": 0.09,
+      "model_path": "models/saved_models/svm_full.pkl"
+    },
+    "xgboost": {
+      "best_params": {
+        "learning_rate": 0.1,
+        "max_depth": 3,
+        "n_estimators": 200
+      },
+      "best_cv_accuracy": 0.9686,
+      "training_time_seconds": 0.42,
+      "model_path": "models/saved_models/xgboost_full.pkl"
+    }
+  },
+  "selected_features": {
+    "logistic_regression": {
+      "best_params": {
+        "C": 0.1,
+        "penalty": "l2",
+        "solver": "lbfgs"
+      },
+      "best_cv_accuracy": 0.9771,
+      "training_time_seconds": 0.03,
+      "model_path": "models/saved_models/logistic_regression_selected.pkl"
+    },
+    "random_forest": {
+      "best_params": {
+        "max_depth": null,
+        "min_samples_split": 5,
+        "n_estimators": 100
+      },
+      "best_cv_accuracy": 0.9829,
+      "training_time_seconds": 1.01,
+      "model_path": "models/saved_models/random_forest_selected.pkl"
+    },
+    "extra_trees": {
+      "best_params": {
+        "max_depth": 10,
+        "n_estimators": 200
+      },
+      "best_cv_accuracy": 0.98,
+      "training_time_seconds": 0.45,
+      "model_path": "models/saved_models/extra_trees_selected.pkl"
+    },
+    "lightgbm": {
+      "best_params": {
+        "learning_rate": 0.1,
+        "max_depth": -1,
+        "n_estimators": 100
+      },
+      "best_cv_accuracy": 0.9714,
+      "training_time_seconds": 4.8,
+      "model_path": "models/saved_models/lightgbm_selected.pkl"
+    },
+    "decision_tree": {
+      "best_params": {
+        "max_depth": null,
+        "min_samples_split": 5
+      },
+      "best_cv_accuracy": 0.9514,
+      "training_time_seconds": 0.08,
+      "model_path": "models/saved_models/decision_tree_selected.pkl"
+    },
+    "ann": {
+      "best_params": {
+        "alpha": 0.0001,
+        "hidden_layer_sizes": [
+          50
+        ],
+        "learning_rate_init": 0.01
+      },
+      "best_cv_accuracy": 0.98,
+      "training_time_seconds": 0.78,
+      "model_path": "models/saved_models/ann_selected.pkl"
+    },
+    "svm": {
+      "best_params": {
+        "C": 0.1,
+        "gamma": "auto",
+        "kernel": "rbf"
+      },
+      "best_cv_accuracy": 0.9857,
+      "training_time_seconds": 0.07,
+      "model_path": "models/saved_models/svm_selected.pkl"
+    },
+    "xgboost": {
+      "best_params": {
+        "learning_rate": 0.1,
+        "max_depth": 3,
+        "n_estimators": 100
+      },
+      "best_cv_accuracy": 0.98,
+      "training_time_seconds": 0.24,
+      "model_path": "models/saved_models/xgboost_selected.pkl"
+    }
+  },
+  "cv_folds": 5,
+  "random_state": 40,
+  "scoring": "accuracy"
+}
