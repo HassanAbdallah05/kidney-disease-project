@@ -45,8 +45,8 @@ python code/explainability.py
 - `data/` : contains the CKD dataset
 - `code/` : contains preprocessing, training, evaluation, and explainability scripts
 - `results/` : contains output tables and figures
-- `models/:` contains saved models
-- `notebooks/:` contains experiment notebooks
+-  `models/`: contains saved trained models.
+- `notebooks/`: contains experiment notebooks.
 - `requirements.txt` : contains required Python libraries
 
 
