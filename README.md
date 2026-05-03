@@ -50,6 +50,13 @@ python code/explainability.py
 - `requirements.txt` : contains required Python libraries
 
 
+## Final Results
+
+The best full-feature models were Random Forest, LightGBM, and XGBoost, each achieving 100% accuracy and MCC = 1.0000 on the test split. The best selected-feature models were Random Forest and LightGBM, each achieving MCC = 0.9644.
+
+SelectKBest did not improve the best score, but it reduced the number of input features while keeping competitive performance. The perfect scores should be interpreted carefully because the UCI CKD dataset is small and structured.
+
+
 ## References
 - **Original paper:** [PeerJ Computer Science, vol. 10, e2291 (2024)](https://peerj.com/articles/cs-2291/)
 - **Dataset:** [UCI Chronic Kidney Disease Dataset](https://archive.ics.uci.edu/dataset/336/chronic+kidney+disease)
