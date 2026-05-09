@@ -1,4 +1,3 @@
-````markdown
 # Chronic Kidney Disease (CKD) Prediction Using Machine Learning
 
 This project reproduces and extends a CKD prediction pipeline based on the paper **"Enhancing machine learning-based forecasting of chronic renal disease with explainable AI"**. The original work uses machine learning models, SMOTE, GridSearchCV, and SHAP/LIME explainability on the UCI CKD dataset.
@@ -53,7 +52,7 @@ python code/feature_selection.py
 ## Code Files
 
 * `preprocess.py`: cleans the raw data and creates train/test files.
-* `train_models.py`: trains machine learning models and saves the trained pipelines.
+* `train_models.py`: trains machine learning models and saves trained pipelines.
 * `evaluate.py`: evaluates saved models on the held-out test set.
 * `cross_validate.py`: runs the main 5-fold cross-validation evaluation.
 * `explainability.py`: generates SHAP and LIME explanations.
@@ -86,7 +85,9 @@ The main final evaluation uses **5-fold cross-validation**. The table below repo
 
 Random Forest achieved the best full-feature performance. SVM was added as an extension model and achieved competitive performance.
 
-### Feature Selection Results
+---
+
+## Feature Selection Results
 
 SelectKBest was tested with `k = 10` features. The table below compares MCC before and after feature selection.
 
@@ -120,6 +121,3 @@ The UCI CKD dataset is small, with only 400 patient records. Some clinical featu
 * Mahmoud Abuzaanounah
 
 ML Course Project / Spring 2026
-
-```
-```
