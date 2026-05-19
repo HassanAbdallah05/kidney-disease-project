@@ -2,16 +2,13 @@ import os
 import json
 import pandas as pd
 import numpy as np
-from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.model_selection import train_test_split
-from imblearn.over_sampling import SMOTE
-import joblib
 
 
 # Configuration
 DATA_PATH = "data/kidney_disease.csv"
 OUTPUT_DIR = "data/processed"
-RANDOM_STATE = 42
+RANDOM_STATE = 40
 TEST_SIZE = 0.30
 
 
@@ -20,16 +17,29 @@ def load_data(path):
     return pd.read_csv(path)
 
 
-# Clean dataset
+# Clean raw dataset only
 def clean_data(df):
+    df = df.copy()
+
     if "id" in df.columns:
         df = df.drop("id", axis=1)
 
     for col in df.select_dtypes(include=["object"]).columns:
         df[col] = df[col].astype(str).str.strip().str.lower()
 
-    df.replace({"\t?": np.nan, "?": np.nan, "": np.nan, "nan": np.nan}, inplace=True)
-    df.replace({"\tno": "no", "\tyes": "yes", " yes": "yes", "ckd\t": "ckd"}, inplace=True)
+    df.replace(
+        {
+            "\t?": np.nan,
+            "?": np.nan,
+            "": np.nan,
+            "nan": np.nan,
+            "\tno": "no",
+            "\tyes": "yes",
+            " yes": "yes",
+            "ckd\t": "ckd"
+        },
+        inplace=True
+    )
 
     numeric_cols = [
         "age", "bp", "sg", "al", "su", "bgr", "bu",
@@ -43,40 +53,22 @@ def clean_data(df):
     return df
 
 
-# Impute missing values
-def random_imputation(df):
+# Encode target manually
+def encode_target(df):
     df = df.copy()
-    np.random.seed(RANDOM_STATE)
-
-    for col in df.columns:
-        if df[col].isnull().sum() > 0:
-            observed = df[col].dropna().values
-            n_missing = df[col].isnull().sum()
-            df.loc[df[col].isnull(), col] = np.random.choice(observed, size=n_missing)
-
-    return df
-
-
-# Encode categorical features
-def encode_categorical(df):
-    df = df.copy()
-    encoders = {}
 
     df["classification"] = df["classification"].map({
         "notckd": 0,
         "ckd": 1
     })
 
-    for col in df.select_dtypes(include=["object"]).columns:
-        if col != "classification":
-            le = LabelEncoder()
-            df[col] = le.fit_transform(df[col])
-            encoders[col] = le
+    if df["classification"].isnull().sum() > 0:
+        raise ValueError("Target mapping failed. Check classification values.")
 
-    return df, encoders
+    return df
 
 
-# Split data
+# Split raw data before imputation, scaling, encoding, or SMOTE
 def split_data(df, target_col="classification"):
     X = df.drop(target_col, axis=1)
     y = df[target_col]
@@ -90,37 +82,12 @@ def split_data(df, target_col="classification"):
     )
 
 
-# Scale features
-def scale_features(X_train, X_test):
-    scaler = StandardScaler()
-
-    X_train_scaled = pd.DataFrame(
-        scaler.fit_transform(X_train),
-        columns=X_train.columns,
-        index=X_train.index
-    )
-
-    X_test_scaled = pd.DataFrame(
-        scaler.transform(X_test),
-        columns=X_test.columns,
-        index=X_test.index
-    )
-
-    return X_train_scaled, X_test_scaled, scaler
-
-
-# Apply SMOTE
-def apply_smote(X_train, y_train):
-    smote = SMOTE(random_state=RANDOM_STATE)
-    return smote.fit_resample(X_train, y_train)
-
-
-# Save outputs
-def save_outputs(X_train, X_test, y_train, y_test, scaler, encoders):
+# Save raw train/test split
+def save_outputs(X_train, X_test, y_train, y_test):
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    X_train.to_csv(f"{OUTPUT_DIR}/X_train.csv", index=False)
-    X_test.to_csv(f"{OUTPUT_DIR}/X_test.csv", index=False)
+    X_train.to_csv(f"{OUTPUT_DIR}/X_train_raw.csv", index=False)
+    X_test.to_csv(f"{OUTPUT_DIR}/X_test_raw.csv", index=False)
 
     pd.Series(y_train, name="classification").to_csv(
         f"{OUTPUT_DIR}/y_train.csv",
@@ -132,23 +99,28 @@ def save_outputs(X_train, X_test, y_train, y_test, scaler, encoders):
         index=False
     )
 
-    joblib.dump(scaler, f"{OUTPUT_DIR}/scaler.pkl")
-    joblib.dump(encoders, f"{OUTPUT_DIR}/encoders.pkl")
+    numeric_features = X_train.select_dtypes(include=["int64", "float64"]).columns.tolist()
+    categorical_features = X_train.select_dtypes(include=["object"]).columns.tolist()
 
     metadata = {
-        "n_features": X_train.shape[1],
-        "feature_names": X_train.columns.tolist(),
+        "n_features_raw": X_train.shape[1],
+        "feature_names_raw": X_train.columns.tolist(),
+        "numeric_features": numeric_features,
+        "categorical_features": categorical_features,
         "n_train": len(X_train),
         "n_test": len(X_test),
         "random_state": RANDOM_STATE,
         "test_size": TEST_SIZE,
-        "imputation_method": "random sampling",
-        "scaling_method": "StandardScaler",
-        "balancing_method": "SMOTE",
         "target_mapping": {
             "notckd": 0,
             "ckd": 1
-        }
+        },
+        "note": (
+            "This file only cleans and splits raw data. "
+            "Imputation, encoding, scaling, SMOTE, feature selection, "
+            "and model training should happen inside training/CV pipelines "
+            "to reduce data leakage."
+        )
     }
 
     with open(f"{OUTPUT_DIR}/metadata.json", "w") as f:
@@ -158,19 +130,20 @@ def save_outputs(X_train, X_test, y_train, y_test, scaler, encoders):
 # Main pipeline
 def main():
     print("Loading and cleaning data...")
+
     df = load_data(DATA_PATH)
     df = clean_data(df)
-    df = random_imputation(df)
-    df, encoders = encode_categorical(df)
+    df = encode_target(df)
 
-    print("Splitting and scaling...")
+    print("Splitting raw train/test data...")
+
     X_train, X_test, y_train, y_test = split_data(df)
-    X_train, X_test, scaler = scale_features(X_train, X_test)
-    X_train, y_train = apply_smote(X_train, y_train)
 
-    save_outputs(X_train, X_test, y_train, y_test, scaler, encoders)
+    save_outputs(X_train, X_test, y_train, y_test)
 
-    print("Preprocessing complete. Files saved to data/processed/")
+    print("Preprocessing complete.")
+    print("Raw train/test files saved to data/processed/")
+    print("Target mapping: notckd = 0, ckd = 1")
 
 
 if __name__ == "__main__":

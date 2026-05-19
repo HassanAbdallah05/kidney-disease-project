@@ -21,8 +21,7 @@ RESULTS_DIR = "results"
 PLOTS_DIR = "results/plots/confusion_matrices"
 
 POS_LABEL = 1   # CKD
-NEG_LABEL = 0   # Not CKD
-
+NEG_LABEL = 0   # No CKD
 TOP_N_CONFUSION = 5
 
 MODEL_NAMES = [
@@ -39,15 +38,10 @@ MODEL_NAMES = [
 VERSIONS = ["full", "selected"]
 
 
-# Load test data
-def load_test_data(version):
-    if version == "full":
-        X_test = pd.read_csv(f"{PROCESSED_DIR}/X_test.csv")
-    else:
-        X_test = pd.read_csv(f"{PROCESSED_DIR}/X_test_selected.csv")
-
+# Load raw test data
+def load_test_data():
+    X_test = pd.read_csv(f"{PROCESSED_DIR}/X_test_raw.csv")
     y_test = pd.read_csv(f"{PROCESSED_DIR}/y_test.csv").iloc[:, 0]
-
     return X_test, y_test
 
 
@@ -91,12 +85,12 @@ def evaluate_model(model, X_test, y_test):
 
 # Evaluate all models
 def evaluate_all_models():
+    X_test, y_test = load_test_data()
+
     results = []
     predictions = {}
 
     for version in VERSIONS:
-        X_test, y_test = load_test_data(version)
-
         for name in MODEL_NAMES:
             model_path = f"{MODELS_DIR}/{name}_{version}.pkl"
 
@@ -111,7 +105,6 @@ def evaluate_all_models():
                 "Model": name,
                 "Version": version
             }
-
             row.update({key: round(value, 4) for key, value in metrics.items()})
             results.append(row)
 
@@ -187,6 +180,9 @@ def print_summary(results_df):
 # Main pipeline
 def main():
     results_df, predictions = evaluate_all_models()
+
+    if results_df.empty:
+        raise ValueError("No models were evaluated. Check models/saved_models/.")
 
     results_df = results_df.sort_values("MCC", ascending=False).reset_index(drop=True)
 

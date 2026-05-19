@@ -1,6 +1,6 @@
 {
-  "n_features": 24,
-  "feature_names": [
+  "n_features_raw": 24,
+  "feature_names_raw": [
     "age",
     "bp",
     "sg",
@@ -26,29 +26,41 @@
     "pe",
     "ane"
   ],
-  "n_train": 350,
+  "numeric_features": [
+    "age",
+    "bp",
+    "sg",
+    "al",
+    "su",
+    "bgr",
+    "bu",
+    "sc",
+    "sod",
+    "pot",
+    "hemo",
+    "pcv",
+    "wc",
+    "rc"
+  ],
+  "categorical_features": [
+    "rbc",
+    "pc",
+    "pcc",
+    "ba",
+    "htn",
+    "dm",
+    "cad",
+    "appet",
+    "pe",
+    "ane"
+  ],
+  "n_train": 280,
   "n_test": 120,
-  "random_state": 42,
+  "random_state": 40,
   "test_size": 0.3,
-  "imputation_method": "random sampling",
-  "scaling_method": "StandardScaler",
-  "balancing_method": "SMOTE",
   "target_mapping": {
     "notckd": 0,
     "ckd": 1
   },
-  "k_features": 10,
-  "selected_features": [
-    "sg",
-    "al",
-    "pc",
-    "bu",
-    "hemo",
-    "pcv",
-    "rc",
-    "htn",
-    "dm",
-    "appet"
-  ],
-  "feature_selection_method": "SelectKBest (ANOVA F-value)"
+  "note": "This file only cleans and splits raw data. Imputation, encoding, scaling, SMOTE, feature selection, and model training should happen inside training/CV pipelines to reduce data leakage."
 }

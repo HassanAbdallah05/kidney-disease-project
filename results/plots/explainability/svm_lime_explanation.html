@@ -37089,25 +37089,25 @@
 /***/ })
 /******/ ]);
 //# sourceMappingURL=bundle.js.map </script></head><body>
-        <div class="lime top_div" id="top_divIBW7MGDAK494J88"></div>
+        <div class="lime top_div" id="top_divNTMQS5U5BFTKRXB"></div>
         
         <script>
-        var top_div = d3.select('#top_divIBW7MGDAK494J88').classed('lime top_div', true);
+        var top_div = d3.select('#top_divNTMQS5U5BFTKRXB').classed('lime top_div', true);
         
             var pp_div = top_div.append('div')
                                 .classed('lime predict_proba', true);
             var pp_svg = pp_div.append('svg').style('width', '100%');
-            var pp = new lime.PredictProba(pp_svg, ["No CKD", "CKD"], [0.0003616809844970703, 0.9996383190155029]);
+            var pp = new lime.PredictProba(pp_svg, ["No CKD", "CKD"], [1.8717979558872817e-09, 0.999999998128202]);
             
         
         var exp_div;
             var exp = new lime.Explanation(["No CKD", "CKD"]);
         
                 exp_div = top_div.append('div').classed('lime explanation', true);
-                exp.show([["sg <= -0.42", 0.2958090540418961], ["sc > -0.14", 0.2174762453881633], ["-0.52 < hemo <= 0.39", 0.20994761116232957], ["-0.79 < htn <= 1.27", 0.11531760147787483], ["-0.51 < pcv <= 0.38", 0.03568173649941363], ["appet > -0.49", 0.029246428972110362], ["al > -0.00", 0.026809416726355808], ["-0.37 < bgr <= -0.05", 0.025960136768985575], ["-0.04 < pot <= 0.18", 0.021153625688847273], ["pe > -0.47", 0.020543741968251532]], 1, exp_div);
+                exp.show([["sg <= -0.50", 0.02775544478957783], ["al > 0.92", 0.019145659545020743], ["rc <= -0.20", 0.017266822469529475], ["dm_no <= 0.00", 0.014359971945375291], ["htn_no <= 0.00", 0.01357586359523905]], 1, exp_div);
                 
         var raw_div = top_div.append('div');
-            exp.show_raw_tabular([["sg", "-0.42", 0.2958090540418961], ["sc", "0.29", 0.2174762453881633], ["hemo", "-0.35", 0.20994761116232957], ["htn", "1.27", 0.11531760147787483], ["pcv", "-0.40", 0.03568173649941363], ["appet", "2.02", 0.029246428972110362], ["al", "2.23", 0.026809416726355808], ["bgr", "-0.35", 0.025960136768985575], ["pot", "0.18", 0.021153625688847273], ["pe", "2.14", 0.020543741968251532]], 1, raw_div);
+            exp.show_raw_tabular([["sg", "-0.50", 0.02775544478957783], ["al", "1.71", 0.019145659545020743], ["rc", "-0.31", 0.017266822469529475], ["dm_no", "0.00", 0.014359971945375291], ["htn_no", "0.00", 0.01357586359523905]], 1, raw_div);
         
         </script>
         </body></html>

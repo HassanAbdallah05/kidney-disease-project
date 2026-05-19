@@ -21,7 +21,7 @@ def load_data():
     return X_train, X_test, y_train
 
 
-# Apply SelectKBest with ANOVA F-value
+# Apply SelectKBest
 def apply_selectkbest(X_train, y_train, k):
     selector = SelectKBest(score_func=f_classif, k=k)
     selector.fit(X_train, y_train)
@@ -36,7 +36,7 @@ def apply_selectkbest(X_train, y_train, k):
     return selector, ranking_df
 
 
-# Transform train and test sets
+# Transform train and test
 def transform_data(selector, X_train, X_test):
     selected_features = X_train.columns[selector.get_support()].tolist()
 
@@ -74,13 +74,13 @@ def plot_feature_ranking(ranking_df, k):
     plt.close()
 
 
-#save outputs
-def save_outputs(X_train_selected, X_test_selected, selector, ranking_df, selected_features):
+# Save outputs
+def save_outputs(X_train_sel, X_test_sel, selector, ranking_df, selected_features):
     os.makedirs(PROCESSED_DIR, exist_ok=True)
     os.makedirs(RESULTS_DIR, exist_ok=True)
 
-    X_train_selected.to_csv(f"{PROCESSED_DIR}/X_train_selected.csv", index=False)
-    X_test_selected.to_csv(f"{PROCESSED_DIR}/X_test_selected.csv", index=False)
+    X_train_sel.to_csv(f"{PROCESSED_DIR}/X_train_selected.csv", index=False)
+    X_test_sel.to_csv(f"{PROCESSED_DIR}/X_test_selected.csv", index=False)
 
     joblib.dump(selector, f"{PROCESSED_DIR}/selector.pkl")
     ranking_df.to_csv(f"{RESULTS_DIR}/feature_ranking.csv", index=False)
@@ -101,29 +101,16 @@ def save_outputs(X_train_selected, X_test_selected, selector, ranking_df, select
         json.dump(metadata, f, indent=2)
 
 
-
-
 # Main pipeline
 def main():
     X_train, X_test, y_train = load_data()
 
     selector, ranking_df = apply_selectkbest(X_train, y_train, K_FEATURES)
 
-    X_train_selected, X_test_selected, selected_features = transform_data(
-        selector,
-        X_train,
-        X_test
-    )
+    X_train_sel, X_test_sel, selected_features = transform_data(selector, X_train, X_test)
 
     plot_feature_ranking(ranking_df, K_FEATURES)
-
-    save_outputs(
-        X_train_selected,
-        X_test_selected,
-        selector,
-        ranking_df,
-        selected_features
-    )
+    save_outputs(X_train_sel, X_test_sel, selector, ranking_df, selected_features)
 
     print(f"Feature selection complete. Top {K_FEATURES} features: {selected_features}")
 
